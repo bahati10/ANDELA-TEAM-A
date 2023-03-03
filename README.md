@@ -1,2 +1,2 @@
-# ANDELA-TEAM-A
+# ANDELA-TEAM-A Project
 This is a Team project Repo
