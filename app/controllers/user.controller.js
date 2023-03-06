@@ -1,5 +1,5 @@
 const db = require("../models");
-const User = db.user;
+const User = db.users;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new User
@@ -16,6 +16,7 @@ exports.create = (req, res) => {
   const tutorial = {
     names: req.body.names,
     email: req.body.email,
+    published: req.body.published ? req.body.published : false
   };
 
   // Save User in the database
@@ -43,39 +44,25 @@ exports.findAll = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving user."
+          err.message || "Some error occurred while retrieving users."
       });
     });
 };
 
 // Find a single User with an id
 exports.findOne = (req, res) => {
-  const email = req.params.email;
+  const id = req.params.id;
 
-  User.findOne({ where: { email: email } })
-    .then(user => {
-      res.send(user);
+  User.findByPk(id)
+    .then(data => {
+      res.send(data);
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving user with email=" + email
+        message: "Error retrieving User with id=" + id
       });
     });
 };
-
-// exports.findOne = (req, res) => {
-//   const id = req.params.id;
-
-//   User.findByPk(id)
-//     .then(data => {
-//       res.send(data);
-//     })
-//     .catch(err => {
-//       res.status(500).send({
-//         message: "Error retrieving User with id=" + id
-//       });
-//     });
-// };
 
 // Update a User by the id in the request
 exports.update = (req, res) => {
@@ -139,7 +126,7 @@ exports.deleteAll = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while removing all tutorials."
+          err.message || "Some error occurred while removing all users."
       });
     });
 };
