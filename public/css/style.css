@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Poppins&family=Righteous&family=Roboto&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+
+body {
+    user-select: none;
+    min-width: 310px;
+    background: #143034;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+:root {
+    --FONT-COLOR: #FBFBFB;;
+    --FONT-STYLE: 'Poppins', sans-serif;;
+}
+
+
+.main-form{
+    backdrop-filter: blur(3px);
+    width: 320px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 50px;
+    background:  #142838;
+    border-radius: 8px;
+    border-left: 1px solid #E0EEC6;
+    border-bottom: 1px solid #E0EEC6;
+}
+
+.input {
+    margin: 10px 0;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 3px;
+    width: 95%;
+}
+
+.input:focus {
+    outline: none;
+}
+
+
+.message {
+    padding: -20px 10px;
+}
+
+
+.title {
+    color: var(--FONT-COLOR);
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+    font-family: var(--FONT-STYLE);
+}
+
+.label {
+    color: var(--FONT-COLOR);
+    font-weight: 600;
+    font-family: var(--FONT-STYLE);
+}
+
+.send-email {
+    text-align: center;
+    border: none;
+    padding: 8px 20px;
+    display: block;
+    margin: 20px auto 0 auto;
+    font-size: 0.87rem;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    border-radius: 3px;
+    transition: 0.5s;
+}
+
+.send-email:hover{
+    background: #02A096;
+    color: var(--FONT-COLOR);
+}

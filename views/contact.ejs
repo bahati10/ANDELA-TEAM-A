@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./public/css/style.css">
+    <title>Simple API</title>
+</head>
+<body>
+    <form method="POST" action="/sendemail" class="main-form">
+        <h3 class="title">Email Sender</h3>
+        <label for="recipient" class="label one">Recipient</label> <br>
+        <input type="text" name="recipient" class="input recipient"> <br>
+        <label for="sub" class="label three">Subject</label> <br>
+        <input type="text" name="sub" class="input subject"> <br>
+        <label for="email" class="label four">Message</label> <br>
+        <textarea name="email" class="input message" cols="30" rows="7"></textarea>
+        <button type="submit" class="send-email">Send</button>
+    </form>
+</body>
+
+</html>
