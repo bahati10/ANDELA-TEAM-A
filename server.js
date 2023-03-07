@@ -3,7 +3,6 @@ const session = require('express-session')
 const express = require("express");
 const passport = require('passport')
 const jwt = require('jsonwebtoken');
-const cors = require("cors");
 require('./auth')
 
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -23,11 +22,7 @@ app.use(session({secret: process.env.SECRET_KEY}))
 app.use(passport.initialize())
 app.use(passport.session())
 
-var corsOptions = {
-  origin: "http://localhost:8081"
-};
 
-app.use(cors(corsOptions));
 
 
 // parse requests of content-type - application/json
