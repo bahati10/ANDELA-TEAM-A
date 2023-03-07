@@ -39,9 +39,14 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(id, done) {
   User.findByPk(id)
     .then(user => {
+      if (!user) {
+        return done("User not found", null);
+      }
       done(null, user);
     })
     .catch(err => {
       done(err, null);
     });
 });
+
+

@@ -42,11 +42,11 @@ app.get('/protected', isLoggedIn, (req, res) => {
   res.send(`Hello ${req.user.names}`);
 });
 
-app.get('/logout', (req, res) => {
-  req.logout();
-  req.session.destroy();
-  res.send('Goodbye');
-});
+// app.get('/logout', (req, res) => {
+//   req.logout();
+//   req.session.destroy();
+//   res.send('Goodbye');
+// });
 
 app.get('/auth/failure', (req, res) => {
   res.send('Something went wrong');

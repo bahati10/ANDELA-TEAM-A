@@ -1,6 +1,10 @@
 const db = require("../models");
 const User = db.users;
 const Op = db.Sequelize.Op;
+const bcrypt = require('bcrypt');
+const passport = require('passport');
+const jwt = require('jsonwebtoken');
+
 
 // Create and Save a new User
 exports.create = (req, res) => {
@@ -13,14 +17,14 @@ exports.create = (req, res) => {
   }
 
   // Create a User
-  const tutorial = {
+  const user = {
     names: req.body.names,
     email: req.body.email,
-    published: req.body.published ? req.body.published : false
+    password: bcrypt.hashSync(req.body.password, 10), // Hash the password
   };
 
   // Save User in the database
-  User.create(tutorial)
+  User.create(user)
     .then(data => {
       res.send(data);
     })
@@ -30,6 +34,23 @@ exports.create = (req, res) => {
           err.message || "Some error occurred while creating the User."
       });
     });
+};
+
+
+//LOGIN
+exports.login = (req, res, next) => {
+  passport.authenticate('local', { session: false }, (err, user, info) => {
+    if (err || !user) {
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
+    req.login(user, { session: false }, (err) => {
+      if (err) {
+        res.send(err);
+      }
+      const token = jwt.sign({ id: user.id }, 'mysecretkey', { expiresIn: 86400 }); // token expires in 24 hours
+      return res.json({ auth: true, token });
+    });
+  })(req, res, next);
 };
 
 // Retrieve all Users from the database.
